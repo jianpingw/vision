@@ -1,0 +1,74 @@
+---
+layout: base
+title: Blog
+permalink: /posts/
+---
+
+<div class="posts-header">
+  <div class="container">
+    <h1>Blog Posts</h1>
+    <p>Explore our articles on Jerusalem's tech scene, innovation, and development</p>
+  </div>
+</div>
+
+<div class="posts-container">
+  <div class="container">
+    <div class="posts-grid">
+      {% assign posts = collections.posts | reverse %}
+      {% for post in posts %}
+        <article class="post-card">
+          {% if post.data.image %}
+            <div class="post-card-image" style="background-image: url('{{ post.data.image }}')"></div>
+          {% else %}
+            <div class="post-card-image" style="background-image: url('/assets/images/default-post.jpg')"></div>
+          {% endif %}
+          
+          <div class="post-card-content">
+            <div class="post-card-date">{{ post.date | dateFormat }}</div>
+            <h3 class="post-card-title">
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+            <div class="post-card-excerpt">
+              {% if post.data.excerpt %}
+                {{ post.data.excerpt }}
+              {% else %}
+                {{ post.templateContent | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+            <a href="{{ post.url }}" class="post-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .posts-header {
+    background-color: var(--color-background-alt);
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .posts-header h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .posts-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+  }
+  
+  .posts-container {
+    padding-bottom: 4rem;
+  }
+  
+  @media (max-width: 768px) {
+    .posts-header {
+      padding: 3rem 0;
+    }
+  }
+</style>

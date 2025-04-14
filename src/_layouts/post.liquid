@@ -1,0 +1,72 @@
+---
+layout: base
+---
+
+<article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | dateFormat }}</time>
+            {% if tags %}
+            <div class="post-tags">
+                {% for tag in tags %}
+                    {% if tag != "post" %}
+                    <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <h1 class="post-title">{{ title }}</h1>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+    <footer class="post-footer">
+        <div class="post-share">
+            <span>Share:</span>
+            <a href="https://twitter.com/intent/tweet?text={{ title | url_encode }}&url={{ page.url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | url_encode }}&title={{ title | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+</article>
+
+<div class="post-navigation">
+    <div class="container">
+        <div class="post-nav-links">
+            {% if collections.posts %}
+                {% assign posts = collections.posts | reverse %}
+                {% for post in posts %}
+                    {% if post.url == page.url %}
+                        {% assign postIndex = forloop.index0 %}
+                        {% assign prevIndex = postIndex | minus: 1 %}
+                        {% assign nextIndex = postIndex | plus: 1 %}
+                        
+                        {% if prevIndex >= 0 %}
+                            {% assign prevPost = posts[prevIndex] %}
+                            <a href="{{ prevPost.url }}" class="post-nav-prev">
+                                <span class="post-nav-label"><i class="fas fa-arrow-left"></i> Previous</span>
+                                <span class="post-nav-title">{{ prevPost.data.title }}</span>
+                            </a>
+                        {% endif %}
+                        
+                        {% if nextIndex < posts.size %}
+                            {% assign nextPost = posts[nextIndex] %}
+                            <a href="{{ nextPost.url }}" class="post-nav-next">
+                                <span class="post-nav-label">Next <i class="fas fa-arrow-right"></i></span>
+                                <span class="post-nav-title">{{ nextPost.data.title }}</span>
+                            </a>
+                        {% endif %}
+                        
+                        {% break %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

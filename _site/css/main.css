@@ -1,0 +1,573 @@
+/* 
+ * Jerusalem Tech Blog Theme
+ * Colors inspired by Jerusalem: gold (#c9a648), stone (#e6e1d6), blue (#4a7fb5)
+ * Combined with modern tech aesthetics
+ */
+
+:root {
+  --color-primary: #4a7fb5;
+  --color-secondary: #c9a648;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-background: #ffffff;
+  --color-background-alt: #f8f7f4;
+  --color-border: #e6e1d6;
+  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Header */
+.site-header {
+  background-color: var(--color-background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.logo-icon {
+  color: var(--color-secondary);
+  margin-right: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.logo-text {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-nav li {
+  margin-left: 2rem;
+}
+
+.main-nav a {
+  color: var(--color-text);
+  font-weight: 600;
+  position: relative;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--color-secondary);
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--color-text);
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/jerusalem-skyline.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b08f3c;
+  color: white;
+}
+
+/* Posts Grid */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.post-card {
+  background-color: var(--color-background);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-card-image {
+  height: 200px;
+  background-color: var(--color-background-alt);
+  background-size: cover;
+  background-position: center;
+}
+
+.post-card-content {
+  padding: 1.5rem;
+}
+
+.post-card-date {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.post-card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-card-excerpt {
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+}
+
+.post-card-link {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.post-card-link i {
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.post-card-link:hover i {
+  transform: translateX(3px);
+}
+
+/* Single Post */
+.post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+}
+
+.post-tags {
+  display: flex;
+  margin-left: 1rem;
+}
+
+.tag {
+  background-color: var(--color-background-alt);
+  color: var(--color-text-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-content {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.post-content h2,
+.post-content h3 {
+  margin-top: 2rem;
+}
+
+.post-content img {
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.post-content blockquote {
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--color-text-light);
+}
+
+.post-content pre {
+  background-color: var(--color-background-alt);
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.post-content code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--color-background-alt);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.post-share {
+  display: flex;
+  align-items: center;
+}
+
+.post-share span {
+  margin-right: 1rem;
+  font-weight: 600;
+}
+
+.post-share a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-background-alt);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.post-share a:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Post Navigation */
+.post-navigation {
+  border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
+}
+
+.post-nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-nav-prev,
+.post-nav-next {
+  display: flex;
+  flex-direction: column;
+  max-width: 45%;
+}
+
+.post-nav-label {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.post-nav-prev .post-nav-label i {
+  margin-right: 0.5rem;
+}
+
+.post-nav-next .post-nav-label i {
+  margin-left: 0.5rem;
+}
+
+.post-nav-title {
+  font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--color-background-alt);
+  padding: 3rem 0;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info p {
+  margin-bottom: 0;
+  color: var(--color-text-light);
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* About Page */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.about-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.about-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+/* Contact Page */
+.contact-form {
+  max-width: 600px;
+  margin: 3rem auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .main-nav {
+    margin-top: 1rem;
+  }
+  
+  .main-nav ul {
+    justify-content: center;
+  }
+  
+  .main-nav li {
+    margin: 0 1rem;
+  }
+  
+  .hero {
+    padding: 4rem 0;
+  }
+  
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+  
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-social {
+    margin-top: 1.5rem;
+  }
+  
+  .footer-social a {
+    margin: 0 0.5rem;
+  }
+  
+  .post-nav-links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .post-nav-prev,
+  .post-nav-next {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-nav li {
+    margin: 0.5rem;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+  }
+}

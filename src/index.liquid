@@ -1,0 +1,195 @@
+---
+layout: base
+title: Home
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Jerusalem Tech Blog</h1>
+    <p>Exploring the intersection of ancient wisdom and cutting-edge technology in the heart of Jerusalem</p>
+    <a href="/posts/" class="btn">Read Our Blog</a>
+  </div>
+</section>
+
+<section class="featured-posts">
+  <div class="container">
+    <h2>Latest Articles</h2>
+    
+    <div class="posts-grid">
+      {% assign posts = collections.posts | reverse %}
+      {% for post in posts limit:6 %}
+        <article class="post-card">
+          {% if post.data.image %}
+            <div class="post-card-image" style="background-image: url('{{ post.data.image }}')"></div>
+          {% else %}
+            <div class="post-card-image" style="background-image: url('/assets/images/default-post.jpg')"></div>
+          {% endif %}
+          
+          <div class="post-card-content">
+            <div class="post-card-date">{{ post.date | dateFormat }}</div>
+            <h3 class="post-card-title">
+              <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+            <div class="post-card-excerpt">
+              {% if post.data.excerpt %}
+                {{ post.data.excerpt }}
+              {% else %}
+                {{ post.templateContent | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+            <a href="{{ post.url }}" class="post-card-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center">
+      <a href="/posts/" class="btn">View All Posts</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-preview">
+  <div class="container">
+    <div class="about-section">
+      <div class="about-image">
+        <img src="/assets/images/jerusalem-tech-hub.jpg" alt="Jerusalem Tech Hub" loading="lazy">
+      </div>
+      <div class="about-content">
+        <h2>Where Ancient Meets Innovation</h2>
+        <p>Jerusalem, a city with over 3,000 years of history, is rapidly emerging as a vibrant tech hub. Our blog explores this unique intersection where ancient wisdom meets cutting-edge innovation.</p>
+        <p>From startup success stories to deep dives into the latest technologies, we cover the dynamic tech ecosystem flourishing in this historic city.</p>
+        <a href="/about/" class="btn">Learn More About Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topics-section">
+  <div class="container">
+    <h2>Popular Topics</h2>
+    
+    <div class="topics-grid">
+      <div class="topic-card animate-on-scroll">
+        <div class="topic-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>Startups</h3>
+        <p>Discover the innovative startups emerging from Jerusalem's tech ecosystem.</p>
+      </div>
+      
+      <div class="topic-card animate-on-scroll">
+        <div class="topic-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3>AI & Machine Learning</h3>
+        <p>Explore cutting-edge AI research and applications being developed locally.</p>
+      </div>
+      
+      <div class="topic-card animate-on-scroll">
+        <div class="topic-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h3>Web Development</h3>
+        <p>Stay updated on the latest web technologies, frameworks, and best practices.</p>
+      </div>
+      
+      <div class="topic-card animate-on-scroll">
+        <div class="topic-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Cybersecurity</h3>
+        <p>Learn about advancements in cybersecurity from Israel's renowned security experts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-center {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .featured-posts,
+  .topics-section {
+    padding: 4rem 0;
+  }
+  
+  .featured-posts h2,
+  .topics-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .featured-posts h2::after,
+  .topics-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    margin: 1rem auto 0;
+  }
+  
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .topic-card {
+    background-color: var(--color-background);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .topic-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .topic-icon {
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .topic-card h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .topic-card p {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+  
+  .about-preview {
+    background-color: var(--color-background-alt);
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    .topics-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .featured-posts,
+    .topics-section,
+    .about-preview {
+      padding: 3rem 0;
+    }
+  }
+</style>

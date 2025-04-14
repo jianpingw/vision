@@ -1,0 +1,254 @@
+---
+layout: base
+title: Contact
+permalink: /contact/
+---
+
+<div class="contact-header">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Have a question, suggestion, or want to collaborate? We'd love to hear from you!</p>
+  </div>
+</div>
+
+<div class="contact-container">
+  <div class="container">
+    <div class="contact-content-wrapper">
+      <div class="contact-main">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" class="form-control" rows="6" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-submit">Send Message</button>
+        </form>
+        
+        <div class="form-success" id="formSuccess" style="display: none;">
+          <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. We'll get back to you as soon as possible.</p>
+          <button class="btn" id="resetForm">Send Another Message</button>
+        </div>
+      </div>
+      
+      <div class="contact-sidebar">
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Visit Us</h3>
+          </div>
+          <p>Jerusalem Technology Park<br>Building 8, 4th Floor<br>Jerusalem, Israel</p>
+        </div>
+        
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Us</h3>
+          </div>
+          <p><a href="mailto:info@jerusalemtechblog.com">info@jerusalemtechblog.com</a></p>
+          <p><a href="mailto:editor@jerusalemtechblog.com">editor@jerusalemtechblog.com</a> (for article submissions)</p>
+        </div>
+        
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <i class="fas fa-share-alt"></i>
+            <h3>Connect With Us</h3>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <i class="fas fa-clock"></i>
+            <h3>Response Time</h3>
+          </div>
+          <p>We typically respond to all inquiries within 24-48 hours during business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const resetFormButton = document.getElementById('resetForm');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // In a real implementation, you would send the form data to a server here
+        // For this demo, we'll just show the success message
+        contactForm.style.display = 'none';
+        formSuccess.style.display = 'block';
+      });
+    }
+    
+    if (resetFormButton) {
+      resetFormButton.addEventListener('click', function() {
+        contactForm.reset();
+        contactForm.style.display = 'block';
+        formSuccess.style.display = 'none';
+      });
+    }
+  });
+</script>
+
+<style>
+  .contact-header {
+    background-color: var(--color-background-alt);
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .contact-header h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+  }
+  
+  .contact-container {
+    padding-bottom: 4rem;
+  }
+  
+  .contact-content-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+  }
+  
+  .contact-form {
+    background-color: var(--color-background);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .form-success {
+    background-color: var(--color-background);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .success-icon {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-success h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .form-success p {
+    margin-bottom: 2rem;
+    color: var(--color-text-light);
+  }
+  
+  .contact-info-card {
+    background-color: var(--color-background);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .contact-info-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info-header i {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-right: 1rem;
+    width: 30px;
+    text-align: center;
+  }
+  
+  .contact-info-header h3 {
+    margin-bottom: 0;
+  }
+  
+  .contact-info-card p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-info-card p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-background-alt);
+    border-radius: 50%;
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+  
+  @media (max-width: 992px) {
+    .contact-content-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact-header {
+      padding: 3rem 0;
+    }
+  }
+</style>
