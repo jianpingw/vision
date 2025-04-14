@@ -1,1 +1,1 @@
-npx eleventy
+<code>npx eleventy --output docs</code>
