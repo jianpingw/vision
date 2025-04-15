@@ -3,6 +3,41 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Scroll-based header hide/show
+  const setupScrollHeader = () => {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    let lastScroll = 0;
+    const mobileBreakpoint = 768;
+
+    window.addEventListener('scroll', function() {
+      if (window.innerWidth > mobileBreakpoint) return;
+
+      const currentScroll = window.pageYOffset;
+
+      // At top of page - always show
+      if (currentScroll <= 0) {
+        header.classList.remove('hide');
+        header.classList.add('show');
+        return;
+      }
+
+      // Scrolling down - hide header
+      if (currentScroll > lastScroll && !header.classList.contains('hide')) {
+        header.classList.remove('show');
+        header.classList.add('hide');
+      }
+      // Scrolling up - show header
+      else if (currentScroll < lastScroll && header.classList.contains('hide')) {
+        header.classList.remove('hide');
+        header.classList.add('show');
+      }
+
+      lastScroll = currentScroll;
+    });
+  };
+
   // Mobile menu toggle
   const setupMobileMenu = () => {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -17,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const highlightCurrentPage = () => {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.main-nav a');
-    
+
     navLinks.forEach(link => {
       const linkPath = link.getAttribute('href');
-      if (currentPath === linkPath || 
+      if (currentPath === linkPath ||
           (linkPath !== '/' && currentPath.startsWith(linkPath))) {
         link.classList.add('active');
       }
@@ -34,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           window.scrollTo({
@@ -72,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // Initialize
+  setupScrollHeader();
   setupMobileMenu();
   highlightCurrentPage();
   setupSmoothScroll();
