@@ -5,6 +5,11 @@ module.exports = function(eleventyConfig) {
     strictFilters: true
   });
 
+  // Create posts collection
+  eleventyConfig.addCollection("posts", function(collection) {
+    return collection.getFilteredByGlob("src/posts/*.md").reverse();
+  });
+
   // Copy static assets to the output directory
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");
