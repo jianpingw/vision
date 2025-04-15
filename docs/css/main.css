@@ -37,6 +37,9 @@ body {
   body {
     padding-top: 0;
   }
+  .site-content {
+    padding-top: 80px;
+  }
 }
 
 .container {
