@@ -30,7 +30,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
   /* Account for fixed header on mobile */
-  padding-top: 70px;
+  padding-top: 75px;
 }
 
 @media (min-width: 769px) {
@@ -38,7 +38,7 @@ body {
     padding-top: 0;
   }
   .site-content {
-    padding-top: 80px;
+    padding-top: 90px;
   }
 }
 
